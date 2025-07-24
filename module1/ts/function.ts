@@ -1,5 +1,5 @@
 
-
+{
 //normal function
 
 
@@ -48,7 +48,7 @@ console.log(newArr)
 
 
 
-
+}
 
 
 

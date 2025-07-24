@@ -1,4 +1,4 @@
-
+{
 // primitive data type
 
 
@@ -38,3 +38,6 @@ let arrr:string[]=["hh","oo"]
 
 let tuple:[number,string]=[70,"hi"]
 
+
+
+}

@@ -1,5 +1,5 @@
 
-
+{
 
 let person:{
     readonly name: string;
@@ -19,3 +19,6 @@ let person:{
 // person.code="4567"
 
 // person.name="skt"
+
+
+}
