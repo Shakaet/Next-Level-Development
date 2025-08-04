@@ -52,3 +52,24 @@ let person:ReadonlyProperty={
 
 
 
+// Record Type***(eta important, eta mane holo dynamic vabe onk type declard korte hole use kora hoy)
+
+
+
+type obj=Record<string,number>
+
+
+let EmptyObj:Record<string,unknown>={}  //eta project er shomoy onk use hobe
+
+
+
+let objval:obj={
+    a:5,
+    b:7,
+    c:10
+    
+}
+
+
+
+
