@@ -1,5 +1,5 @@
 "use strict";
-// static ekta value ei shob object(instance) er jonno share kore, do not create instanse directly call by className
+// static ekta value ei shob object(instance) er jonno share kore, do not create instanse directly call by className,, static method er shateo boshano jay
 class Counter {
     increament() {
         return Counter.counter = Counter.counter + 1;
