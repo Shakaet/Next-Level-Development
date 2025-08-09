@@ -887,7 +887,7 @@
 //   _id: 1,
 //   name: "Sakayet",
 //   hobbies: [
-//     { name: "reading", level: "beginner" },
+//     { name: "reading", lev el: "beginner" },
 //     { name: "coding", level: "intermediate" }
 //   ]
 // }
