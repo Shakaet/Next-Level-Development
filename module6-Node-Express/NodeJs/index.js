@@ -22,6 +22,6 @@ let {a:A,add:Add} = require("./local2.js")
 
 let path=require("path")
 
-// console.log(path.dirname("C:/Users/hotspot/Documents/ph-level-2/Next-level/module6-Node-Express/NodeJs/index.js"))
-// console.log(path.parse("C:/Users/hotspot/Documents/ph-level-2/Next-level/module6-Node-Express/NodeJs/index.js"))
+console.log(path.dirname("C:/Users/hotspot/Documents/ph-level-2/Next-level/module6-Node-Express/NodeJs/index.js"))
+console.log(path.parse("C:/Users/hotspot/Documents/ph-level-2/Next-level/module6-Node-Express/NodeJs/index.js"))
 console.log(path.join("C:/Users/hotspot/Documents/ph-level-2/Next-level/module6-Node-Express/NodeJs/","local.js"))
