@@ -19,15 +19,25 @@ server.on("request",(req,res)=>{
            
 
         readableStream.on("data",(buffer)=>{
+             
 
+             res.statusCode=200
+             console.log(res)
             res.write(buffer)
             // console.log(buffer)
 
         })
 
         readableStream.on("end",()=>{
+             res.statusCode=200
+            res.end("the streaming is over")
 
-            res.end("hello world")
+        })
+
+        readableStream.on("error",(err)=>{
+            console.log(err)
+             res.statusCode=404
+            res.end("the streaming is error")
 
         })
 
