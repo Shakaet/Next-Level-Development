@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+
+    "start":"node ./dist/server.js",
+    "ts-node":"ts-node-dev --respawn --transpile-only src/server.ts",
     "lint": "eslint src --ext .ts .",
     "prettier": "npx prettier --write src/",
     "build": "tsc -w",
@@ -33,7 +36,14 @@
     "globals": "^16.3.0",
     "jiti": "^2.5.1",
     "prettier": "^3.6.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.39.1"
   }
+
+
+
+
+
+
 }
