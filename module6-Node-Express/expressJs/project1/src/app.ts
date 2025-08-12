@@ -163,7 +163,7 @@ app.post("/",(req:Request,res:Response)=>{
 //     message: "not found"
 //   });
 // });
-app.use((req, res) => {
+app.use((req:Request, res:Response) => {
   res.status(404).json({
     status: false,
     message: "not found"
