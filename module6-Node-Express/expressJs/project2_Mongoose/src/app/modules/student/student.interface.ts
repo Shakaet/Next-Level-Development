@@ -1,8 +1,17 @@
 
+
+// step1: interface(if use ts)
+// step2: schema
+// step3: model
+// step4:db query
 import { Schema, model, connect } from 'mongoose';
 
 
-
+ export type Name= {
+    firstName:string,
+    middleName:string,
+    lastName:string
+  };
 
 export type Guardian= {
     fatherName:string,
@@ -14,11 +23,7 @@ export type Guardian= {
   }
 
 
-  export type Name= {
-    firstName:string,
-    middleName:string,
-    lastName:string
-  };
+ 
 
   export type LocalGuardian={
     name:string,
@@ -31,7 +36,7 @@ export type  Student=  {
   id:string,
   name:Name,
   gender:"male"|"female",
-  dateOfBirth:string,
+  dateOfBirth?:string,
   email: string;
   contactNo:string,
   emergencyContactNo:string,
@@ -41,5 +46,5 @@ export type  Student=  {
   guardian:Guardian,
   localGuardian:LocalGuardian,
   profileImg?:string,
-  isActive:"active"|"inActive"
+  isActive:"active"|"blocked"
 }
