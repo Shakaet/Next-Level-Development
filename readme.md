@@ -71,7 +71,7 @@ Learned **ODM for MongoDB**:
 ### 8️⃣ Real-World MERN Projects
 Integrated all skills into multiple **full projects**:
 - API + database integration etc
-- 
+  
 
 ---
 
