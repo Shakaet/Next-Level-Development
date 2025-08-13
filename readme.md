@@ -1,6 +1,6 @@
-# 🚀 Full MERN Stack + TypeScript Learning Journey  
+# 🚀 Full Backend + TypeScript Learning Journey  
 
-This repository is my **complete learning path** from **Beginner → Advanced** in Fullstack Development with **TypeScript, MongoDB, Express.js, Mongoose, Redux, and Next.js**.  
+This repository is my **complete learning path** from **Beginner → Advanced** in Backend Development with **TypeScript, MongoDB, Express.js, Mongoose**.  
 It contains multiple projects inside **one codebase**, organized into separate modules.
 
 ---
@@ -29,7 +29,7 @@ Applied **Object-Oriented Programming in TS**:
 - Classes, objects, inheritance
 - Access modifiers (public, private, protected)
 - Getters & setters
-- Abstract classes & interfaces
+- Abstract classes & interfaces etc
 
 ---
 
@@ -46,7 +46,7 @@ Worked with:
 Built advanced data analytics pipelines:
 - `$match`, `$group`, `$sort`, `$project`
 - Lookup (joins between collections)
-- Calculated fields & conditional expressions
+- Calculated fields & conditional expressions etc
 
 ---
 
@@ -55,7 +55,7 @@ Developed REST APIs:
 - Routing & middleware
 - Error handling
 - MVC pattern
-- API versioning
+- API versioning etc
 
 ---
 
@@ -64,13 +64,13 @@ Learned **ODM for MongoDB**:
 - Schema & model design
 - Validation
 - Population & virtuals
-- Pre & post middleware
+- Pre & post middleware etc
 
 ---
 
 ### 8️⃣ Real-World MERN Projects
 Integrated all skills into multiple **full projects**:
-- API + database integration
+- API + database integration etc
 - 
 
 ---
