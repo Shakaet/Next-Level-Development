@@ -38,7 +38,7 @@ Worked with:
 - **CRUD operations**
 - Filtering & sorting
 - Indexing for performance
-- Query operators
+- Query operators etc
 
 ---
 
