@@ -3,6 +3,7 @@ import { studentServices } from "./student.service"
 
 import { Student } from "./student.interface";
 import { studentJoiSchema } from "./validation.joi";
+import { studentZodSchema } from "./validation.jod";
 
 
 
@@ -17,21 +18,36 @@ export const createStudent =async(req:Request,res:Response,next:NextFunction)=>{
 
 
      const student:Student=req.body.students
-
-     const { error, value } = studentJoiSchema.validate(student);
+      
+     // data validation using joi
+    //  const { error, value } = studentJoiSchema.validate(student);
 
 
     //  console.log(error,value)
-     if(error){
-         return res.status(500).json({
-        status:false,
-        message:"something Wrongg",
-        data:error
-    })
+    //  if(error){
+    //      return res.status(500).json({
+    //     status:false,
+    //     message:"something Wrongg",
+    //     data:error
+    // })
 
-     }
+    //  }
+     // when using joi
+    // const result=await studentServices.createStudentToDatabase(value)
 
-    const result=await studentServices.createStudentToDatabase(student)
+
+
+      // validation with zod
+
+
+    let zodParseData= studentZodSchema.parse(student)
+    const result=await studentServices.createStudentToDatabase(zodParseData)
+
+
+
+
+
+  
 
      // send response
       
