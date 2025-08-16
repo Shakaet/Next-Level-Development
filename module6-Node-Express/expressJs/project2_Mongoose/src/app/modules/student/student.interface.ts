@@ -35,7 +35,7 @@ export type Guardian= {
 export type  Student=  {
   id:string,
   name:Name,
-  gender:"male"|"female",
+  gender:"male"|"female"|"others",
   dateOfBirth?:string,
   email: string;
   contactNo:string,

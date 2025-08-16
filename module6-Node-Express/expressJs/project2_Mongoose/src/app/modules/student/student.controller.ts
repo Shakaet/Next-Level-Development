@@ -1,6 +1,9 @@
 import { NextFunction, Request, Response } from "express"
 import { studentServices } from "./student.service"
 
+import { Student } from "./student.interface";
+import { studentJoiSchema } from "./validation.joi";
+
 
 
 
@@ -10,7 +13,23 @@ export const createStudent =async(req:Request,res:Response,next:NextFunction)=>{
 
 
    try{
-     const student=req.body.students
+
+
+
+     const student:Student=req.body.students
+
+     const { error, value } = studentJoiSchema.validate(student);
+
+
+    //  console.log(error,value)
+     if(error){
+         return res.status(500).json({
+        status:false,
+        message:"something Wrongg",
+        data:error
+    })
+
+     }
 
     const result=await studentServices.createStudentToDatabase(student)
 
@@ -23,10 +42,19 @@ export const createStudent =async(req:Request,res:Response,next:NextFunction)=>{
     })
 
 
-   }catch(err){
+   }catch(err:any){
     // console.log(err)
-    next(err)
+    // next(err)
+    res.status(500).json({
+        status:false,
+        message:"something Wrong",
+        data:err
+    })
+
+    
+
    }
+   
     
 
 }
