@@ -4,7 +4,7 @@
 // step2: schema
 // step3: model
 // step4:db query
-import { Schema, model, connect } from 'mongoose';
+import { Schema, model, connect, Model } from 'mongoose';
 
 
  export type Name= {
@@ -34,6 +34,7 @@ export type Guardian= {
 
 export type  Student=  {
   id:string,
+  password:string,
   name:Name,
   gender:"male"|"female"|"others",
   dateOfBirth?:string,
@@ -48,3 +49,33 @@ export type  Student=  {
   profileImg?:string,
   isActive:"active"|"blocked"
 }
+
+
+// custom instance method
+
+// 👉 Instance methods এর জন্য আলাদা টাইপ
+export type StudentMethods= {
+  isUserExist(id: string): Promise<Student | null>;
+}
+
+// custom static method
+
+interface StudentStatics extends Model<Student> {
+  myStaticMethod(id: string):Promise<Student | null>;
+}
+
+
+
+
+
+
+
+// 👉 Model টাইপ
+// export type StudentModel = Model<Student, {}, StudentMethods>;{} mane holo kono statics method nai
+
+export type StudentModel = Model<Student, StudentStatics, StudentMethods>;
+
+
+
+
+

@@ -63,7 +63,7 @@ export const createStudent =async(req:Request,res:Response,next:NextFunction)=>{
     // next(err)
     res.status(500).json({
         status:false,
-        message:"something Wrong",
+        message:` ${err.message} ||something Wrong`,
         data:err
     })
 

@@ -1,14 +1,36 @@
-import { Student } from "./student.interface";
-import { Studentmodel } from "./student.model";
+
+import { Student} from "./student.interface";
+import {   studentmodel, studentSchema } from "./student.model";
 
 
 
 const createStudentToDatabase=async(student:Student)=>{
 
 
+    //    console.log(student.id)
+    
+    // for instance method
+    //    const s=new studentmodel(student)
+    //    if(await s.isUserExist(student.id)){
 
-        const result= Studentmodel.create(student)
-        return result
+    //     throw new Error("students Id already exist")
+
+    //    }
+
+       if(await studentmodel.myStaticMethod(student.id)){
+        throw new Error("students Id already existtt")
+
+
+       }
+        
+     
+    
+          
+        // const result= await Studentmodel.create(student)  // build in static method in mongoose
+        const student1=new studentmodel(student)   // create a instance
+        
+        return await student1.save()  // build in instance method
+        // return result
 
 
 
@@ -17,7 +39,7 @@ const createStudentToDatabase=async(student:Student)=>{
 
 const getAllStudentFromDB=async()=>{
 
-    const result= await Studentmodel.find()
+    const result= await studentmodel.find()
     return result
 
 }
@@ -25,7 +47,7 @@ const getAllStudentFromDB=async()=>{
 
 const getSpecificStudentsFromDb=async(id:string)=>{
 
-    const result=await Studentmodel.findById(id)
+    const result=await studentmodel.findById(id)
 
     return result
     

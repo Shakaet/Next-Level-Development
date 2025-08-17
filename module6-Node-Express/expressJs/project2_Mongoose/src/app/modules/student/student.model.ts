@@ -1,8 +1,13 @@
 
 
-import { Schema, model, connect } from 'mongoose';
-import { Guardian, LocalGuardian, Name, Student } from './student.interface';
+import { Schema, model, connect, Model } from 'mongoose';
+import { Guardian,   LocalGuardian, Name, Student, StudentMethods, StudentModel, studentModelType, StudentStaticModel } from './student.interface';
 import validator from 'validator';
+import bcrypt from "bcrypt"
+import config from '../../config';
+import { NextFunction } from 'express';
+import { any } from 'joi';
+
 
 
 
@@ -80,8 +85,12 @@ const localGuardianSchema=new Schema<LocalGuardian>(
 )
 
 //  Create a Schema corresponding to the document interface.
-const studentSchema = new Schema<Student>({
+export const studentSchema = new Schema<Student,StudentModel,StudentMethods>({
   id: { type: String,required:true,unique:true },
+  password:{type: String,
+    required:true,
+    unique:true,
+    minLength:[6,"password should be more than 6 characters"]},
   name:{
     type:nameSchema,
     required:[true,"name is required"],
@@ -146,5 +155,47 @@ const studentSchema = new Schema<Student>({
   
 });
 
+
+
+/// middleware
+
+
+// pre save middleware,(document save howar age kaj kore)
+
+studentSchema.pre('save', async function(next) {
+  console.log(this,'data will be added'); // Will be executed
+
+  let student=this // here this refers to documents
+   student.password=await bcrypt.hash(student.password,Number(config.bcryptHash));
+   next()
+});
+
+studentSchema.post('save', function(doc,next) {
+
+  doc.password=""
+  next()
+  // console.log(this,'data save in DB'); // Will be executed
+});
+
+
+/// custom instance method
+ studentSchema.methods.isUserExist = async function (id: string) {
+      const result = await studentmodel.findOne({ id });
+      return result;
+};
+
+///custom static method
+
+  studentSchema.statics.myStaticMethod = async function(id:string) {
+  const result = await studentmodel.findOne({ id });
+      return result;
+};
+
+
+
+
+
+
+
 //. Create a Model.
-export const Studentmodel = model<Student>('Student', studentSchema);
+export const studentmodel = model<Student,StudentModel>('Student', studentSchema);
