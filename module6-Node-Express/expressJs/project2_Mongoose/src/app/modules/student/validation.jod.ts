@@ -65,4 +65,5 @@ export const studentZodSchema = z.object({
     val => isActiveEnum.options.includes(val),
     { message: "Status must be 'active' or 'blocked'" }
   ),
+  isDeleted:z.boolean()
 });

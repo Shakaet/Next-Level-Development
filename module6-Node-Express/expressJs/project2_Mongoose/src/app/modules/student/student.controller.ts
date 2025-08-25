@@ -83,10 +83,20 @@ export const getAllStudents=async(req:Request,res:Response,next:NextFunction)=>{
     try{
         const result= await studentServices.getAllStudentFromDB()
 
-    res.status(201).send(result)
+    res.status(201).json({
+        success:true,
+        message:"all students data find",
+        data:result
+    })
 
-    }catch(err){
+    }catch(err:any){
         // console.log(err)
+         res.status(500).json({
+        status:false,
+        message:` ${err.message} ||something Wrong`,
+        data:err
+    })
+
         next(err)
     }
 
@@ -100,6 +110,7 @@ export const getSpecificStudent=async(req:Request,res:Response,next:NextFunction
 
    try{
      const id=req.params.id
+     console.log(id)
 
     const result=await studentServices.getSpecificStudentsFromDb(id)
 
@@ -109,9 +120,48 @@ export const getSpecificStudent=async(req:Request,res:Response,next:NextFunction
         data:result
     })
 
-   }catch(err){
+   }catch(err:any){
+     res.status(500).json({
+        status:false,
+        message:` ${err.message} ||something Wrong`,
+        data:err
+    })
+
     // console.log("errroer",err)
-    next(err)
+     next(err)
    }
 
 }
+
+
+export let deletedSpecificStudent=async(req:Request,res:Response,next:NextFunction)=>{
+
+
+
+    try{
+        let id= req.params.id
+
+    let result= await studentServices.deletedSpecificStudentfromDb(id)
+    
+    res.status(200).json({
+        status:true,
+        messsage:"data find",
+        data:result
+    })
+
+   }catch(err:any){
+     res.status(500).json({
+        status:false,
+        message:` ${err.message} ||something Wrong`,
+        data:err
+    })
+
+    // console.log("errroer",err)
+     next(err)
+   }
+    
+    }
+
+    
+
+

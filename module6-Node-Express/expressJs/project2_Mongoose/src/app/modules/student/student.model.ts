@@ -6,7 +6,7 @@ import validator from 'validator';
 import bcrypt from "bcrypt"
 import config from '../../config';
 import { NextFunction } from 'express';
-import { any } from 'joi';
+import { any, boolean } from 'joi';
 
 
 
@@ -89,7 +89,6 @@ export const studentSchema = new Schema<Student,StudentModel,StudentMethods>({
   id: { type: String,required:true,unique:true },
   password:{type: String,
     required:true,
-    unique:true,
     minLength:[6,"password should be more than 6 characters"]},
   name:{
     type:nameSchema,
@@ -148,7 +147,8 @@ export const studentSchema = new Schema<Student,StudentModel,StudentMethods>({
     enum:["active","blocked"],
     required:true,
     default:"active"
-  }
+  },
+  isDeleted:{type:Boolean,default:false}
 
 
  
@@ -158,7 +158,9 @@ export const studentSchema = new Schema<Student,StudentModel,StudentMethods>({
 
 
 /// middleware
+// totoal middleware 3 ta(document middleware,query and aggregation middleware)
 
+//document middleware
 
 // pre save middleware,(document save howar age kaj kore)
 
@@ -176,6 +178,40 @@ studentSchema.post('save', function(doc,next) {
   next()
   // console.log(this,'data save in DB'); // Will be executed
 });
+
+
+
+
+// query middleware
+
+studentSchema.pre("find",async function(next){
+  
+
+  this.find({isDeleted:{$ne:true}})
+  next()
+
+})
+
+studentSchema.pre("findOne",async function(next){
+  
+
+  this.find({isDeleted:{$ne:true}})
+  next()
+
+})
+
+// aggregate middleware
+
+
+// this.pipeline() eta diye aggeration pipeline array take bujay ar unshift diye array r prothome ekta notun stage jog kortechi jeta match korteche jegulo isDeleted true na
+
+studentSchema.pre("aggregate",async function(next){
+  
+
+  this.pipeline().unshift({$match:{isDeleted:{$ne:true}}})
+  next()
+
+})
 
 
 /// custom instance method

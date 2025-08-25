@@ -47,14 +47,27 @@ const getAllStudentFromDB=async()=>{
 
 const getSpecificStudentsFromDb=async(id:string)=>{
 
-    const result=await studentmodel.findById(id)
+    // const result=await studentmodel.findOne({id})
+
+    let result=await studentmodel.aggregate([
+        {$match:{id}}
+    ])
+
+
 
     return result
     
 }
 
+let deletedSpecificStudentfromDb=async(id:string)=>{
+    let result=await studentmodel.updateOne({id},{isDeleted:true})
+
+    return result
+}
+
 export const studentServices={
     createStudentToDatabase,
     getAllStudentFromDB,
-    getSpecificStudentsFromDb
+    getSpecificStudentsFromDb,
+    deletedSpecificStudentfromDb
 }
