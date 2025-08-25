@@ -162,6 +162,37 @@ export let deletedSpecificStudent=async(req:Request,res:Response,next:NextFuncti
     
     }
 
+
+export let updateStudent=async(req:Request,res:Response,next:NextFunction)=>{
+
+
+
+    try{
+        let id= req.params.id
+
+        let email=req.body.email
+
+    let result= await studentServices.updateSpecificStudentfromDb(id,email)
+    
+    res.status(200).json({
+        status:true,
+        messsage:"data updated",
+        data:result
+    })
+
+   }catch(err:any){
+     res.status(500).json({
+        status:false,
+        message:` ${err.message} ||something Wrong`,
+        data:err
+    })
+
+    // console.log("errroer",err)
+     next(err)
+   }
+    
+    }
+
     
 
 

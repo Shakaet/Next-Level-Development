@@ -1,4 +1,5 @@
 
+import { email } from "zod";
 import { Student} from "./student.interface";
 import {   studentmodel, studentSchema } from "./student.model";
 
@@ -65,9 +66,16 @@ let deletedSpecificStudentfromDb=async(id:string)=>{
     return result
 }
 
+let updateSpecificStudentfromDb=async(id:string,email:string)=>{
+    let result=await studentmodel.updateOne({id}, { $set: {  email } })
+
+    return result
+}
+
 export const studentServices={
     createStudentToDatabase,
     getAllStudentFromDB,
     getSpecificStudentsFromDb,
-    deletedSpecificStudentfromDb
+    deletedSpecificStudentfromDb,
+    updateSpecificStudentfromDb
 }

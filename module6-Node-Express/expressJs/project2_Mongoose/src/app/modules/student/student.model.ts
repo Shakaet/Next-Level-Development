@@ -153,7 +153,22 @@ export const studentSchema = new Schema<Student,StudentModel,StudentMethods>({
 
  
   
+},{
+  toJSON:{
+    virtuals:true
+  }
 });
+
+
+
+
+// virtual in mongoose
+
+studentSchema.virtual("fullName").get(function(){
+
+  return this.name.firstName + " " + this.name.middleName + " " + this.name.lastName;
+
+})
 
 
 

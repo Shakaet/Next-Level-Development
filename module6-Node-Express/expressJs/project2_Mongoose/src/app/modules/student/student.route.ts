@@ -2,7 +2,7 @@
 import express from "express"
 
 
-import { createStudent, deletedSpecificStudent, getAllStudents, getSpecificStudent } from "./student.controller"
+import { createStudent, deletedSpecificStudent, getAllStudents, getSpecificStudent, updateStudent } from "./student.controller"
 
 
 
@@ -20,6 +20,8 @@ router.get("/allStudents",getAllStudents)
 router.get("/specificStudent/:id",getSpecificStudent)
 
 router.delete("/specificStudent/:id",deletedSpecificStudent)
+
+router.patch("/updateStudent/:id",updateStudent)
 
 
 
